@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-image: url("./img/donggia2.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* PARALLAX */
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* DARK OVERLAY */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.65);
+            top: 0;
+            left: 0;
+        }
+
+        /* NAVBAR */
+        nav {
+            width: 100%;
+            height: 10vh;
+            position: relative;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(58,211,3,0.4);
+        }
+
+        .nav-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .logo span {
+            color: rgb(58, 211, 3);
+            text-shadow: 0 0 15px rgb(58, 211, 3);
+        }
+
+        .nav-container .links {
+            display: flex;
+        }
+
+        .nav-container .links a {
+            font-size: 1.1rem;
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-container .links a:hover,
+        .nav-container .links .active a {
+            color: rgb(58, 211, 3);
+            text-shadow: 0 0 15px rgb(58,211,3);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 20px black;
+            animation: fadeDown 1.5s ease forwards;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            margin-top: 10px;
+            font-size: 1.3rem;
+            opacity: 0;
+            animation: fadeUp 2s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* GLOW BUTTON */
+        .btn-explore {
+            margin-top: 25px;
+            padding: 12px 35px;
+            background: rgb(58, 211, 3);
+            color: black;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(58,211,3,0.7);
+        }
+
+        .btn-explore:hover {
+            background: rgb(30, 150, 0);
+            box-shadow: 0 0 30px rgb(58,211,3);
+            transform: scale(1.1);
+        }
+
+        /* DESTINASI SECTION */
+        .destinasi {
+            width: 100%;
+            padding: 4rem 2rem;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        .destinasi h2 {
+            text-align: center;
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            color: rgb(58,211,3);
+            text-shadow: 0 0 10px rgb(58,211,3);
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 270px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(58,211,3,0.5);
+            transition: 0.3s ease;
+            box-shadow: 0 0 15px rgba(58,211,3,0.2);
+        }
+
+        .card:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(58,211,3,0.8);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 884px) {
+            .nav-container .links { display: none; }
+        }
+    </style>
+
+    <title>Home</title>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in">
+                Donggia <span>Hills</span>
+            </div>
+
+            <div class="links">
+                <div class="link active"><a href="#">Beranda</a></div>
+                <div class="link"><a href="about.html">Tentang</a></div>
+                <div class="link"><a href="galeri.html">Galeri</a></div>
+                <!-- <div class="link"><a href="blog.html">Blog</a></div> -->
+                <div class="link"><a href="lokasi.html">Lokasi</a></div>
+                <div class="link"><a href="index.html">Keluar</a></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div>
+            <h1>Selamat Datang di Donggia Hills</h1>
+            <p>Wisata alam terbaik di Bulukumba dengan panorama perbukitan yang memukau.</p>
+        </div>
+    </section>
+
+    <!-- DESTINASI -->
+    <!-- <section class="destinasi" id="destinasi">
+        <h2>TENTANG</h2>
+
+        <div class="card-container">
+
+            <div class="card" data-aos="fade-right">
+                <img src="img/tentang.png" alt="">
+                <h3>Penjelasan Singkat</h3>
+            </div>
+
+            <div class="card" data-aos="fade-up">
+                <img src="img/galeri.png" alt="">
+                <h3>Foto & Video</h3>
+            </div>
+
+            <div class="card" data-aos="fade-left">
+                <img src="img/lokasi.png" alt="">
+                <h3>Rute</h3>
+            </div>
+
+        </div>
+    </section> -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 0 });
+    </script>
+</body>
+</html>
